@@ -1,0 +1,35 @@
+Title: Difference between HTTP/1.1 vs. HTTP/2 
+
+The internet has evolved significantly in its fundamental protocols, particularly data transfer via the Hypertext Transfer Protocol (HTTP). The introduction of HTTP/2 as a successor to HTTP/1.1 has transformed the landscape of web communication to optimize performance and efficiency.
+
+Evolution
+
+HTTP/1.1:
+As the predecessor, HTTP/1.1 is basic stage for web communication, acting as the backbone for data transfer across the internet. However, as technology advanced and web content became more complex it impact the overall performance.
+
+HTTP/2:
+HTTP/2 emerged as a successor it brought forth several innovative features that revolutionized data transmission and aimed to enhance the browsing experience.
+
+Key Differences and Enhancements
+
+Multiplexing:
+A important advancement in HTTP/2 is multiplexing. Unlike HTTP/1.1, which need separate connections for each file, HTTP/2 enables multiple data streams within a single connection. This simultaneous transmission reduces latency, boosting overall page loading speed.
+
+Header Compression:
+While HTTP/1.1 transmitted header information in plaintext it leading to increased overhead but HTTP/2 employs header compression. This feature minimizes redundant data and decreases the volume of information sent and it enhancing the efficiency.
+
+Server Push:
+HTTP/2 introduced server push which allows servers to send resources to clients before explicit requests. This capability reduces round trips and further enhances load times.
+
+Binary Protocol:
+HTTP/2 utilizes a binary protocol and HTTP/1.1's plaintext communication. This binary format improves parsing and transmission efficiency and that enhanced speed and performance.
+
+Prioritization:
+Enabling stream prioritization in HTTP/2 allows clients to specify the importance of resources. This optimization ensures critical resources are delivered promptly lead to enhancing overall performance.
+
+Backward Compatibility and Security:
+HTTP/2 ensures complete backward compatibility with HTTP/1.1  enabling perfect communication between systems supporting different versions. Moreover, both versions can be used over secure connections (HTTPS) for reinforcing security measures.
+
+Conclusion
+
+HTTP/2 is a needed update in web communication protocols it reduces the flaws in HTTP/1.1 and introduced some features to optimize performance and efficiency. Its focus on multiplexing, header compression, server push, binary protocol, prioritization, and compatibility has transformed the way data is transmitted across the internet.
