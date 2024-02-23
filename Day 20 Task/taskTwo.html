@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap">
+
+    <title>Breaking Bad Quotes Viewer</title>
+    <style>
+        /* internal style sheet (styles for quotes) */
+        #quoteContainer {
+            max-width: 60%;
+            margin: 60px auto;
+            font-family: 'Bebas Neue', sans-serif; 
+        }
+        img {
+            max-width: 30%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bootstrap card design for the quote retrieved from the API -->
+<div class="card text-center">
+    <img class="card-img-top img-fluid rounded-2 w-25" src="BrBa.png" alt="Card image cap">
+    <div class="card-body">
+        <p class="card-text" id="quoteContainer"></p>
+        <p class="card-text" id="authorContainer"></p>
+    </div>
+</div>
+
+<!-- Bootstrap Refresh Button to refresh the page (to get a new quote) -->
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-primary mt-3" onclick="refreshQuote()">Refresh</button>
+</div>
+
+<script>
+    // Function for the refresh button
+    function refreshQuote() {
+        // Fetch quote from Breaking Bad Quotes API
+        fetch("https://api.breakingbadquotes.xyz/v1/quotes")
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    const quoteContainer = document.getElementById("quoteContainer");
+                    const authorContainer = document.getElementById("authorContainer");
+
+                    // Clear previous quote and author
+                    quoteContainer.innerHTML = "";
+                    authorContainer.innerHTML = "";
+
+                    // Create paragraph elements for the quote and author
+                    const quoteElement = document.createElement("p");
+                    quoteElement.classList.add("card-text");
+                    quoteElement.innerHTML = `<h3>${data[0].quote}</h3>`;
+
+                    const authorElement = document.createElement("p");
+                    authorElement.classList.add("card-text");
+                    authorElement.innerHTML = `<strong>${data[0].author}</strong>`;
+
+                    // Append the quote and author to their respective containers
+                    quoteContainer.appendChild(quoteElement);
+                    authorContainer.appendChild(authorElement);
+                } else {
+                    console.error("Failed to fetch Breaking Bad quote.");
+                }
+            })
+            .catch(error => console.error("Error fetching Breaking Bad quote:", error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch initial quote when the page loads
+        refreshQuote();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+    header{
+        background-color:#f0fff0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 2em;
+    }
+.seats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 2em;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: solid 1px black;
+   
+
+}
+.col-1{
+    width: 40%;
+}
+.col-2{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.col-1 img{
+    width: 60%;
+    margin: 0 auto;
+}
+.col-2 p {
+   
+    font-size: 1.5em;
+}
+.col-2{
+    padding-left: 10vw;
+}
+
+/* CSS */
+.button-50 {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-50:focus {
+  text-decoration: none;
+}
+
+.button-50:hover {
+  text-decoration: none;
+}
+
+.button-50:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button-50:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-50 {
+    padding: 12px 50px;
+  }
+}
+</style>
+
+
+</head>
+<body>
+    <header>
+        <h2>EVENT 1</h2>
+    </header>
+    <div class="seats">
+        <p>Number Of Available Seats:23</p>
+    </div>
+    <div class="main">
+        <div class="col-1">
+            <img src="https://img.freepik.com/premium-vector/marketing-event-flat-animated-design_9206-3993.jpg?w=826" alt="">
+        </div>
+        <div class="col-2">
+            <p>Name: <input type="text" placeholder="name"></p>
+            <p>Email: <input type="email"></p>
+            <p>Phone Number: <input type="number"></p>
+            <p>Number Of Seats : 
+                <select name="select" id="number_of_seats">
+                    <option selected>Open this select menu</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="2">3</option>
+                  <option value="2">4</option>
+                  <option value="2">5</option>
+                  <option value="2">6</option>
+                  <option value="2">7</option>
+                  <option value="2">8</option>
+                  <option value="2">9</option>
+                  <option value="2">10</option>
+                  <option value="2">11</option>
+                  <option value="2">12</option>
+                  <option value="2">13</option>
+                  <option value="2">14</option>
+                  <option value="2">15</option>
+                  <option value="2">16</option>
+                  <option value="2">17</option>
+                  <option value="2">18</option>
+                  <option value="2">19</option>
+                  <option value="2">20</option>
+                  <option value="2">21</option>
+                  
+                  <option value="22">22</option>
+                
+              </select></p>
+              <p>Name Of Attendee <input type="text"></p>
+
+              <div class="button">
+                <button class="button-50">submit</button>
+                <button class="button-50">cancel</button>
+              </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

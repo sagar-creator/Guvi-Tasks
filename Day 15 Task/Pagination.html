@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+h1{
+    text-align: center;
+    color: blueviolet;
+    font-size: 5vw;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+p{
+    text-align: center;
+    color: blueviolet;
+    font-size: 5vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    #buttons{
+        display: flex;
+        flex-direction: row;
+      justify-content: center;
+    }
+           button{
+            color: #ffffff;
+            font-size: 3vw;
+            background-color: blueviolet;
+          margin: 0 auto;
+            
+           }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="title">Hi</h1>
+    <p id="description">Welcome!
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+           <th>
+            <td></td>
+           </th>
+        </table>
+    </div>
+
+<div id="buttons" class="d-flex justify-content-center">
+    <button onclick="updateH1TagById(0)">First</button>
+    <button onclick="updateH1TagById(currentPageId()+1)">next</button>
+    <button onclick="updateH1TagById(0)">1</button>
+    <button onclick="updateH1TagById(1)">2</button>
+    <button onclick="updateH1TagById(2)">3</button>
+    <button onclick="updateH1TagById(3)">4</button>
+    <button onclick="updateH1TagById(4)">5</button>
+    <button onclick="updateH1TagById(5)">6</button>
+    <button onclick="updateH1TagById(6)">7</button>
+    <button onclick="updateH1TagById(7)">8</button>
+    <button onclick="updateH1TagById(8)">9</button>
+    <button onclick="updateH1TagById(9)">10</button>
+    <button onclick="updateH1TagById(currentPageId()-1)">previous</button>
+    <button onclick="updateH1TagById(9)">Last</button>
+</div>
+
+   
+
+   
+    <script>
+         const jsonData = [
+    {
+      "id": "1",
+      "name": "Lura Senger",
+      "email": "Xander_Collier@yahoo.com"
+    },
+    {
+      "id": "2",
+      "name": "Wilburn Weber",
+      "email": "Bennett_Kreiger11@yahoo.com"
+    },
+    {
+      "id": "3",
+      "name": "Tyrique Hahn",
+      "email": "Juston.Altenwerth@yahoo.com"
+    },
+    {
+      "id": "4",
+      "name": "Lenny Bailey",
+      "email": "Guiseppe_Hegmann@yahoo.com"
+    },
+    {
+      "id": "5",
+      "name": "Vladimir Keeling",
+      "email": "Louisa_Walsh18@hotmail.com"
+    },
+    {
+      "id": "6",
+      "name": "Kellie Crona",
+      "email": "Chandler_Abernathy@yahoo.com"
+    },
+    {
+      "id": "7",
+      "name": "Carolina White",
+      "email": "Royal50@hotmail.com"
+    },
+    {
+      "id": "8",
+      "name": "Alfredo Conn",
+      "email": "Clarabelle34@hotmail.com"
+    },
+    {
+      "id": "9",
+      "name": "Stan Shanahan",
+      "email": "Lamar.McClure@hotmail.com"
+    },
+    {
+      "id": "10",
+      "name": "Marvin Fay",
+      "email": "Osbaldo58@hotmail.com"
+    }
+  ];
+        let name = document.getElementById("title");
+        let email = document.getElementById("description");
+// name.setAttribute('id','title');
+// email.setAttribute('id','description');
+        let currentPage = 0;
+
+function updateH1TagById(id) {
+    // Ensure the new ID is within bounds
+    if (id >= 0 && id < jsonData.length) {
+        currentPage = id;
+        name.textContent = jsonData[id].name;
+        email.textContent = jsonData[id].email;
+        document.querySelector('h1').appendChild(name);
+            document.querySelector('p').appendChild(email);
+    
+    } 
+}
+
+// Function to get the current page ID
+        function currentPageId() {
+            return currentPage;
+        }
+    </script>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap">
+
+    <title>Harry Potter Characters Viewer</title>
+    <style>
+        /* Internal style sheet (styles for characters) */
+        .character-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .character-card:hover {
+            transform: scale(1.05);
+        }
+        .character-details {
+            display: none;
+        }
+        img {
+            max-width: 30%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<!-- title for content -->
+    <h2 class="text-dark text-center m-4 bg-info" >Welcome to the world of Wizards</h2>
+    
+    
+
+<!-- Bootstrap card design for each character -->
+<div class="container mt-4">
+    <!-- Houses Images Row -->
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="Griffindore.jpg" alt="Gryffindor" class="img-fluid rounded-2">
+            <h5 class="text-primary">Gryffindor</h5>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="Hufflepuff.jpg" alt="Hufflepuff" class="img-fluid rounded-2">
+            <h5 class="text-warning">Hufflepuff</h5>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="Ravenclaw.jpg" alt="Ravenclaw" class="img-fluid rounded-2">
+            <h5 class="text-info">Ravenclaw</h5>
+        </div>
+        <div class="col-md-3 text-center">
+            <img src="slytherin.jpg" alt="Slytherin" class="img-fluid rounded-2">
+            <h5 class="text-success">Slytherin</h5>
+        </div>
+    </div>
+    <!-- function description for the users  -->
+    <h3 class="text-center m-4">Click on the Character name to know more details about the Character </h3>
+    <div class="row" id="characterContainer"></div>
+</div>
+
+<script>
+    // Function to create a character card
+    function createCharacterCard(character) {
+        const characterContainer = document.getElementById("characterContainer");
+
+        // Create a character card
+        const card = document.createElement("div");
+        card.classList.add("col-md-4", "mb-4", "character-card");
+
+        // Create card body with character name
+        const cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+        cardBody.innerHTML = `<h5 class="card-title">${character.name}</h5>`;
+
+        // Create hidden card details
+        const detailsContainer = document.createElement("div");
+        detailsContainer.classList.add("character-details");
+
+        //  (you can customize this based on your preferences)
+        detailsContainer.innerHTML = `
+            <p><strong>House:</strong> ${character.house}</p>
+            <p><strong>Species:</strong> ${character.species}</p>
+            <p><strong>Gender:</strong> ${character.gender}</p>
+            <p><strong>Date of Birth:</strong> ${character.dateOfBirth}</p>
+            <!-- Add more details as needed -->
+
+            <img class="img-fluid rounded-2" src="${character.image}" alt="${character.name}">
+        `;
+
+        // Add click event listener to toggle details visibility
+        card.addEventListener("click", function () {
+            const isOpen = detailsContainer.style.display === "block";
+
+            // Close all details
+            document.querySelectorAll(".character-details").forEach((detail) => {
+                detail.style.display = "none";
+            });
+
+            // Open or close the clicked detail based on its current state
+            detailsContainer.style.display = isOpen ? "none" : "block";
+        });
+
+        // Append card body and details to the card
+        card.appendChild(cardBody);
+        card.appendChild(detailsContainer);
+
+        // Append the card to the container
+        characterContainer.appendChild(card);
+    }
+
+    // Function to fetch and display characters
+    function fetchAndDisplayCharacters() {
+        fetch("https://hp-api.onrender.com/api/characters")
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    data.forEach(character => createCharacterCard(character));
+                } else {
+                    console.error("Failed to fetch Harry Potter characters.");
+                }
+            })
+            .catch(error => console.error("Error fetching Harry Potter characters:", error));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch and display characters when the page loads
+        fetchAndDisplayCharacters();
+    });
+</script>
+
+</body>
+</html>
